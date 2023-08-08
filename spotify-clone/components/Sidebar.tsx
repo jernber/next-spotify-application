@@ -45,6 +45,9 @@ const Sidebar: React.FC<SidebarProps> = ({children}) => {
           <Box>
             Sidebar Navigation
           </Box>
+          <Box className="overflow-y h-full">
+            Song Library
+          </Box>
            </div>
         </div>
     )
