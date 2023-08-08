@@ -29,8 +29,21 @@ const Sidebar: React.FC<SidebarProps> = ({children}) => {
     ], [pathname])
 
     return (
-        
-        <div>{children}</div>
+        <div className="flex h-full">
+            {/* Creating mobile styles */}
+           <div className="
+           hidden 
+           md:flex
+           flex-col
+           gap-y-2
+           bg-black
+           h-full
+           w-[300px]
+           p-2
+           ">
+          
+           </div>
+        </div>
     )
 }
 
