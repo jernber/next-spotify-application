@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { RxCaretLeft, RxCaretRight } from "react-icons/rx"
 import { HiHome } from "react-icons/hi"
 import { BiSearch } from "react-icons/bi"
-
+import Button from './Button'
 interface HeaderProps{
     children: React.ReactNode;
     className?: string;
@@ -29,7 +29,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
                     <RxCaretRight size={35} className="text-white" />
                 </button>
             </div>
-            {/* Mobile Styling */}
+            {/* Mobile Button Styling */}
             <div className="flex md:hidden gap-x-2 items-center">
                 <button className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition">
                     <HiHome className="text-black" size={20} />
@@ -37,6 +37,16 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
                 <button className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition">
                     <BiSearch className="text-black" size={20} />
                 </button>
+            </div>
+            <div className="flex justify-between items-center gap-x-4">
+                {/* Preparing for dynamic content based on logged in or logged out */}
+                <>
+                    <div className="">
+                        <Button>
+                            Sign Up
+                        </Button>
+                    </div>
+                </>
             </div>
         </div>
     </div>
