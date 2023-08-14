@@ -10,7 +10,7 @@ export default function Home() {
             Welcome Back
           </h1>
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols3 2xl:grid-cols-4 gap-3 mt-4">
-            <ListItem />
+            <ListItem image="/images/liked.png" name="Liked songs" />
           </div>
         </div>
       </Header>
