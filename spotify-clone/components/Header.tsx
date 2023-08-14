@@ -41,9 +41,14 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
             <div className="flex justify-between items-center gap-x-4">
                 {/* Preparing for dynamic content based on logged in or logged out */}
                 <>
-                    <div className="">
-                        <Button>
+                    <div className="" >
+                        <Button className="bg-transparent text-neutral-300 font-medium" onClick={() => {}}>
                             Sign Up
+                        </Button>
+                    </div>
+                    <div className="">
+                        <Button className="bg-white px-6 py-2" onClick={() => {}}>
+                            Log In
                         </Button>
                     </div>
                 </>
