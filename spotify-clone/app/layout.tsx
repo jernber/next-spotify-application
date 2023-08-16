@@ -8,7 +8,7 @@ const font = Figtree({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Spotify Clone',
-  description: 'I pay money to listen to Freddie Gibbs and Madlib on Spotify. I want to make a clone of Spotify. By John Bo',
+  description: 'I pay money to listen to Freddie Gibbs, Carly Rae Jepsen, and Project Pat on Spotify. I want to make a clone of Spotify. By John Bo',
 }
 
 export default function RootLayout({
