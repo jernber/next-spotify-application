@@ -12,6 +12,7 @@ const ModalProvider = () => {
     }, [])
 
     if (!isMounted){
+        // Serverside code run here
         return null
     }
    
