@@ -5,10 +5,9 @@ import Modal from "@/components/Modal"
 
 const ModalProvider = () => {
     const [isMounted, setIsMounted] = useState(false)
-
     // Preventing a hydration issue, this is used to prevent modals from being opened during server side rendering.
     
-     useEffect(() => {
+    useEffect(() => {
         setIsMounted(true)
 
     }, [])
@@ -20,7 +19,9 @@ const ModalProvider = () => {
    
   return (
     <>
-       <Modal />
+        <Modal title="Test Modal" description="Test" isOpen onChange={() => {}}>
+            Test Children
+        </Modal>
     </>
   )
 }
