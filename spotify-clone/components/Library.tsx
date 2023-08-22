@@ -1,6 +1,7 @@
 "use client"
 import { TbPlaylist } from "react-icons/tb"
 import { AiOutlinePlus } from "react-icons/ai"
+
 import useAuthModal from "@/hooks/useAuthModal"
 import { useUser } from "@/hooks/useUser"
 
@@ -9,8 +10,8 @@ const Library = () => {
     const user = useUser();
 
     const onClick = () => {
-        if (!user){
-            return authModal.onOpen();
+        if (user.user == null) {
+            return authModal.onOpen()
         }
     }
     return (
