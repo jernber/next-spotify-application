@@ -7,11 +7,11 @@ import { HiHome } from "react-icons/hi"
 import { BiSearch } from "react-icons/bi"
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { FaUserAlt } from "react-icons/fa"
+import { toast } from "react-hot-toast";
 
 import Button from './Button'
 import useAuthModal from "@/hooks/useAuthModal";
 import { useUser } from "@/hooks/useUser";
-import { toast } from "react-hot-toast";
 
 interface HeaderProps{
     children: React.ReactNode;
@@ -28,12 +28,11 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
     const handleLogout = async () => {
         const { error } = await supabaseClient.auth.signOut();
         // TODO: Reset any playing songs
-
         router.refresh()
 
         if (error){
             toast.error(error.message)
-        } else{
+        } else {
             toast.success('Logged out!')
         }
     }
