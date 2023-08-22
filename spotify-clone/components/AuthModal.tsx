@@ -3,6 +3,7 @@
 import { useSessionContext, useSupabaseClient } from "@supabase/auth-helpers-react"
 import { useRouter } from "next/navigation";
 import { Auth } from "@supabase/auth-ui-react"
+import { ThemeSupa } from "@supabase/auth-ui-shared";
 
 import Modal from "./Modal"
 
@@ -13,7 +14,17 @@ const AuthModal = () => {
 
     return (
         <Modal title="Welcome Back" description="Log into your account" isOpen onChange={() => {}}>
-            <Auth supabaseClient={supabaseClient} />
+            <Auth theme="dark" providers={["github", "discord"]} supabaseClient={supabaseClient} appearance={{
+                theme: ThemeSupa,
+                variables: {
+                    default: {
+                        colors: {
+                            brand: '#404040',
+                            brandAccent: '#22c55e'
+                        }
+                    }
+                }
+            }} />
         </Modal>
         
     ) 
