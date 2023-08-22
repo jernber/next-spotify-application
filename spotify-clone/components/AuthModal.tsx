@@ -5,15 +5,23 @@ import { useRouter } from "next/navigation";
 import { Auth } from "@supabase/auth-ui-react"
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 
+import useAuthModal from "@/hooks/useAuthModal";
+
 import Modal from "./Modal"
 
 const AuthModal = () => {
     const supabaseClient = useSupabaseClient();
     const router = useRouter()
     const { session } = useSessionContext()  
+    const { onClose, isOpen } = useAuthModal()
+    const onChange = (open: boolean) => {
+        if(!open){
+            onClose()
+        }
+    }
 
     return (
-        <Modal title="Welcome Back" description="Log into your account" isOpen onChange={() => {}}>
+        <Modal title="Welcome Back" description="Log into your account" isOpen={isOpen} onChange={onChange}>
             <Auth theme="dark" magicLink providers={["github", "discord"]} supabaseClient={supabaseClient} appearance={{
                 theme: ThemeSupa,
                 variables: {
