@@ -7,10 +7,10 @@ import Modal from "./Modal"
 const UploadModal = () => {
     const uploadModal = useUploadModal();
 
-    const onChange = (open: boolean) => {
-      console.log(open)
+    const onChange = (open: boolean ) => {
       if (!open){
-        uploadModal.onClose()
+        //reset the form
+        uploadModal.onClose();
       }
     }
   return (
@@ -18,7 +18,8 @@ const UploadModal = () => {
       title="Upload modal title" 
       description="Upload modal description" 
       isOpen={uploadModal.isOpen} 
-      onChange={onChange}>
+      onChange={onChange}
+      >
 
       Upload Content
     </Modal>
