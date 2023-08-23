@@ -8,15 +8,17 @@ import { useUser } from "@/hooks/useUser"
 
 const Library = () => {
     const authModal = useAuthModal();
-    const user = useUser();
     const uploadModal = useUploadModal();
+    const { user } = useUser();
 
     const onClick = () => {
-        if (user.user == null) {
+
+        if (!user) {
             return authModal.onOpen()
         }
 
-        return uploadModal.onOpen()
+        return uploadModal.onOpen();
+
     }
     return (
         <div className="flex flex-col">
