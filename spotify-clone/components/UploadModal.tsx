@@ -9,7 +9,7 @@ import Input from "./Input";
 
 const UploadModal = () => {
 
-  const [isLoading, setIsLoading] = useState()
+    const [isLoading, setIsLoading] = useState()
 
     const uploadModal = useUploadModal();
 
@@ -43,7 +43,8 @@ const UploadModal = () => {
       >
 
       <form onSubmit={handleSubmit(onSubmit)} >
-        <Input id="title" disabled={isLoading} {...register('title'), { required: true }} placeholder="Song title" />
+
+        <Input id="title" disabled={isLoading} {...register('title', {required: true}) } placeholder="Song title" />
 
       </form>
     </Modal>
