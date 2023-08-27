@@ -1,6 +1,7 @@
 'use client'
 
 import { Song } from "@/types"
+import { BsPauseFill, BsPlayFill } from 'react-icons/bs'
 import MediaItem from "./MediaItem"
 import LikeButton from "./LikeButton"
 
@@ -10,10 +11,10 @@ interface PlayerContentProps {
 }
 
 const PlayerContent: React.FC<PlayerContentProps> = ({song, songUrl}) => {
-
+    const Icon = true ? BsPauseFill : BsPlayFill
 
     return (
-        <div className="grid grid-cols md:grid-cols-3 h-full">
+        <div className="grid grid-cols-2 md:grid-cols-3 h-full">
             <div className="flex w-full justify-start">
                 <div className="flex items-center gap-x-4"> 
                     <MediaItem data={song} />
