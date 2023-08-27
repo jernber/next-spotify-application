@@ -1,5 +1,6 @@
 'use client'
 
+import MediaItem from "@/components/MediaItem"
 import { Song } from "@/types"
 
 interface SearchContentInterface {
@@ -14,7 +15,16 @@ const SearchContent: React.FC<SearchContentInterface> = ({ songs }) => {
     }
 
   return (
-    <div>SearchContent</div>
+    <div className="flex flex-col gap-y-2 px-6 ">
+        {songs.map((song) => (
+            <div className="flex items-center gap-x-4 w-full" key={song.id}>
+                <div className="flex-1">
+                    <MediaItem onClick={() => {}} data={song} />
+                </div>
+                {/* Add like button here */}
+            </div>
+        ))}
+    </div>
   )
 }
 
