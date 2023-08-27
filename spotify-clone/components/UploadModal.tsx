@@ -1,18 +1,22 @@
 "use client"
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { useState } from "react";
+import uniqid from "uniqid";
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
 
+import { useUser } from "@/hooks/useUser";
 import useUploadModal from "@/hooks/useUploadModal"
 
 import Modal from "./Modal"
 import Input from "./Input";
 import Button from "./Button";
+import toast from "react-hot-toast";
 
 const UploadModal = () => {
-
-    const [isLoading, setIsLoading] = useState()
-
+    const [isLoading, setIsLoading] = useState(false)
     const uploadModal = useUploadModal();
+    const { user } = useUser();
+    const supabaseClient = useSupabaseClient()
 
     const { register, handleSubmit, reset } = useForm<FieldValues>({
       defaultValues: {
@@ -31,9 +35,42 @@ const UploadModal = () => {
       }
     }
 
-    const onSubmit: SubmitHandler<FieldValues> = () => {
-      // upload to supabase
+    const onSubmit: SubmitHandler<FieldValues> = async (values) => {
+      try {
+        setIsLoading(true);
+        const imageFile = values.image?.[0]
+        const songFile = values.song?.[0]
 
+        if (!imageFile || !songFile || !user){
+          toast.error("Missing fields")
+          return;
+        }
+
+        const uniqueID = uniqid();
+
+        // Upload song
+        const { data: songData, error: songError} = await supabaseClient.storage.from('songs').upload(`song-${values.title}-${uniqueID}`, songFile, { cacheControl: '3600', upsert: false})
+
+        if (songError){
+          setIsLoading(false)
+          return toast.error('Failed song upload.')
+        }
+
+        // Upload Image
+        const { data: imageData, error: imageError} = await supabaseClient.storage.from('images').upload(`song-${values.title}-${uniqueID}`, imageFile, { cacheControl: '3600', upsert: false})
+        
+        if (imageError){
+          setIsLoading(false)
+          return toast.error('Failed image upload')
+        }
+
+      }
+      catch (error) {
+          toast.error("Something went wrong")
+      }
+      finally{
+        setIsLoading(false)
+      }
     }
   return (
     <Modal 
