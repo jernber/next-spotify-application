@@ -6,6 +6,7 @@ import { Song } from "@/types"
 import { BsPauseFill, BsPlayFill } from 'react-icons/bs'
 import MediaItem from "./MediaItem"
 import LikeButton from "./LikeButton"
+import Slider from "./Slider"
 
 interface PlayerContentProps {
     song: Song
@@ -42,7 +43,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({song, songUrl}) => {
             <div className="hidden md:flex w-full justify-end pr-2">
                 <div className="flex items-center gap-x-2 w-[120px]">
                     <VolumeIcon onClick={() => {}} className="cursor-pointer" size={34} />
-
+                    <Slider />
                 </div>
             </div>
         </div>
