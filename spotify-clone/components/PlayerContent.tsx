@@ -1,6 +1,6 @@
 'use client'
 import { HiSpeakerWave, HiSpeakerXMark } from "react-icons/hi2"
-import { AiFillStepBackward, AiFillStepForward } from "react-icons/ai"
+import {  AiFillStepBackward, AiFillStepForward } from "react-icons/ai"
 
 import { Song } from "@/types"
 import { BsPauseFill, BsPlayFill } from 'react-icons/bs'
@@ -22,6 +22,22 @@ const PlayerContent: React.FC<PlayerContentProps> = ({song, songUrl}) => {
     const Icon = isPlaying ? BsPauseFill : BsPlayFill
     const VolumeIcon = volume === 0 ? HiSpeakerXMark : HiSpeakerWave
 
+    const onPlayNext = () => {
+        if (player.ids.length === 0){
+            return;
+        }
+        
+        const currentIndex = player.ids.findIndex((id) => id === player.activeId)
+        const nextSong = player.ids[currentIndex + 1]
+
+        // If there is no next song start from the top of the playlist
+        if (!nextSong) {
+            return player.setId(player.ids[0])
+        }
+
+        player.setId(nextSong)
+    }
+
     return (
         <div className="grid grid-cols-2 md:grid-cols-3 h-full">
             <div className="flex w-full justify-start">
@@ -39,7 +55,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({song, songUrl}) => {
 
             <div className="hidden h-full md:flex justify-center items-center w-full max-w-[722px] gap-x-6">
                 <AiFillStepBackward size={30} className="text-neutral-400 cursor-pointer hover:text-white transition" onClick={() => {}} />
-                <div onClick={() => {}} className="flex items-center justify-center h-10 w-10 rounded-full bg-white p-1 cursor-pointer">
+                <div onClick={onPlayNext} className="flex items-center justify-center h-10 w-10 rounded-full bg-white p-1 cursor-pointer">
                     <Icon size={30} className="text-black" />
                 </div>
                 <AiFillStepForward onClick={() => {}} size={30} className="text-neutral-400 cursor-pointer hover:text-white transition" />
