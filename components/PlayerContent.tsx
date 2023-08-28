@@ -2,9 +2,7 @@
 import { HiSpeakerWave, HiSpeakerXMark } from "react-icons/hi2"
 import {  AiFillStepBackward, AiFillStepForward } from "react-icons/ai"
 import { BsPauseFill, BsPlayFill } from 'react-icons/bs'
-// @ts-ignore
 import useSound from "use-sound"
-
 
 import { Song } from "@/types"
 import MediaItem from "./MediaItem"
