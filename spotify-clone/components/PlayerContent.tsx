@@ -38,6 +38,22 @@ const PlayerContent: React.FC<PlayerContentProps> = ({song, songUrl}) => {
         player.setId(nextSong)
     }
 
+    const onPlayPrevious = () => {
+        if (player.ids.length === 0){
+            return;
+        }
+        
+        const currentIndex = player.ids.findIndex((id) => id === player.activeId)
+        const prevSong = player.ids[currentIndex - 1]
+
+        // If there is no prev song start from the bottom of the playlist
+        if (!prevSong) {
+            return player.setId(player.ids[player.ids.length - 1])
+        }
+
+        player.setId(prevSong)
+    }
+
     return (
         <div className="grid grid-cols-2 md:grid-cols-3 h-full">
             <div className="flex w-full justify-start">
@@ -48,7 +64,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({song, songUrl}) => {
             </div>
 
             <div className="flex md:hidden col-auto w-full justify-end items-center">
-                <div onClick={() => {}} className="h-10 w-10 flex items-center justify-center rounded-full bg-white p-1 cursor-pointer" >
+                <div onClick={onPlayPrevious} className="h-10 w-10 flex items-center justify-center rounded-full bg-white p-1 cursor-pointer" >
                     <Icon size={30} className="text-black" />
                 </div>
             </div>
