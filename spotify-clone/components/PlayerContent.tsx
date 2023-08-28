@@ -1,14 +1,16 @@
 'use client'
 import { HiSpeakerWave, HiSpeakerXMark } from "react-icons/hi2"
 import {  AiFillStepBackward, AiFillStepForward } from "react-icons/ai"
+import { BsPauseFill, BsPlayFill } from 'react-icons/bs'
+import useSound from 'use-sound'
+
 
 import { Song } from "@/types"
-import { BsPauseFill, BsPlayFill } from 'react-icons/bs'
 import MediaItem from "./MediaItem"
 import LikeButton from "./LikeButton"
 import Slider from "./Slider"
 import usePlayer from "@/hooks/usePlayer"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 interface PlayerContentProps {
     song: Song
@@ -53,6 +55,35 @@ const PlayerContent: React.FC<PlayerContentProps> = ({song, songUrl}) => {
 
         player.setId(prevSong)
     }
+
+    const [ play, { pause, sound} ] = useSound(songUrl, { 
+        volume: volume,
+        onplay: () => setIsPlaying(true),
+        onend: () => { 
+            setIsPlaying(false);
+            onPlayNext() 
+        },
+        onpause: () => setIsPlaying(false),
+        format: ['mp3']
+    })
+
+    useEffect(() => {
+        sound?.play();
+        return () => {
+            sound?.unload()
+        }
+    
+      
+    }, [sound])
+
+    const handlePlay = () => {
+        if (!isPlaying){
+            play()
+        } else {
+            pause()
+        }
+    }
+    
 
     return (
         <div className="grid grid-cols-2 md:grid-cols-3 h-full">
