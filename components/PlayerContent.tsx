@@ -2,7 +2,8 @@
 import { HiSpeakerWave, HiSpeakerXMark } from "react-icons/hi2"
 import {  AiFillStepBackward, AiFillStepForward } from "react-icons/ai"
 import { BsPauseFill, BsPlayFill } from 'react-icons/bs'
-import useSound from 'use-sound'
+// @ts-ignore
+import useSound from "use-sound"
 
 
 import { Song } from "@/types"
