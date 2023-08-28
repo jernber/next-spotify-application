@@ -7,6 +7,10 @@ declare module 'use-sound' {
       interrupt?: boolean;
       soundEnabled?: boolean;
       sprite?: { [key: string]: [number, number] };
+      onplay: () => void
+      onend: () => void
+      onpause: () => void
+      format: [string]
       // You can add more properties as needed based on your use case
     }
   
