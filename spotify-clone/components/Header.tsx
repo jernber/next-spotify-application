@@ -12,6 +12,8 @@ import { toast } from "react-hot-toast";
 import Button from './Button'
 import useAuthModal from "@/hooks/useAuthModal";
 import { useUser } from "@/hooks/useUser";
+import SubscribeModal from "./SubscribeModal";
+import useSubscribeModal from "@/hooks/useSubscribeModal";
 
 interface HeaderProps{
     children: React.ReactNode;
@@ -21,6 +23,7 @@ interface HeaderProps{
 const Header: React.FC<HeaderProps> = ({ children, className }) => {
     const router = useRouter();
     const authModal = useAuthModal();
+    const subModal = useSubscribeModal()
 
     const supabaseClient = useSupabaseClient();
     const { user } = useUser()
@@ -65,12 +68,18 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
                         <Button onClick={handleLogout} className="bg-white px-6 py-2">
                             Logout
                         </Button>
+                        <div className="" >
+                            <Button className="px-6 py-2" onClick={subModal.onOpen}>
+                                Subscribe
+                            </Button>
+                        </div>
                         <Button onClick={() => router.push('/account')} className="bg-white">
                             <FaUserAlt />
                         </Button>
                     </div>
                     ) : (
                             <>
+                            
                                 <div className="" >
                                     <Button className="bg-transparent text-neutral-300 font-medium" onClick={authModal.onOpen}>
                                         Sign Up
