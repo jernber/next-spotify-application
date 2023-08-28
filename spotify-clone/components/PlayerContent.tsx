@@ -119,8 +119,8 @@ const PlayerContent: React.FC<PlayerContentProps> = ({song, songUrl}) => {
                 <div className="flex items-center gap-x-2 w-[120px]">
                     <VolumeIcon onClick={toggleMute} className="cursor-pointer" size={34} />
                     <Slider value={volume} onChange={(value) => setVolume(value)} />
-                </div>
             </div>
+        </div>
         </div>
     )
 }
