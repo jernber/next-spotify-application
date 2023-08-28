@@ -7,8 +7,8 @@ const SubscribeModal = () => {
         <div className="text-center">No Products available</div>
     )
     return (
-        <Modal title="Only for premium Users" description="Listen to music with Spotify Premium" isOpen onChange={() => {}}>
-            Subscription
+        <Modal title="Only For Premium Users" description="Listen to music with Spotify Premium" isOpen onChange={() => {}}>
+            {content}
         </Modal>
     )
 }

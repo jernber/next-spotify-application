@@ -21,7 +21,7 @@ const Modal: React.FC<ModalProps> = ({isOpen, onChange, title, description, chil
                 <Dialog.Description className="mb-5 text-sm leading-normal text-center">
                     {description}    
                 </Dialog.Description>
-                <div className="">
+                <div>
                     {children}
                 </div>
                 <Dialog.Close asChild>
