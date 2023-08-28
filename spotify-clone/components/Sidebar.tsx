@@ -4,11 +4,13 @@ import { usePathname } from "next/navigation"
 import { useMemo } from "react";
 import { HiHome } from "react-icons/hi"
 import { BiSearch } from "react-icons/bi"
+import { twMerge } from "tailwind-merge";
 
 import Box from "./Box"
 import SidebarItem from "./SidebarItem";
 import Library from "./Library";
 import { Song } from "@/types";
+import usePlayer from "@/hooks/usePlayer";
 
 interface SidebarProps{
     children: React.ReactNode
@@ -18,6 +20,7 @@ interface SidebarProps{
 // Using children as a means to pass server components through client components
 const Sidebar: React.FC<SidebarProps> = ({children, songs}) => {
     const pathname = usePathname()
+    const player = usePlayer();
 
     const routes = useMemo(() => [
         {
@@ -35,7 +38,7 @@ const Sidebar: React.FC<SidebarProps> = ({children, songs}) => {
     ], [pathname])
 
     return (
-        <div className="flex h-full">
+        <div className={twMerge('flex h-full', player.activeId && "h-[calc(100%-80px)]")}>
             {/* Creating mobile styles */}
            <div className="
            hidden 
