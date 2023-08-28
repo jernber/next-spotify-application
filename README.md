@@ -3,7 +3,7 @@ Web based Spotify clone using React, Next, Stripe, Tailwind, and Supabase
 
 ## Project Status
 
-Currently in development. Users can add songs, and create a favorites playlist, and will be able to add payment processing
+Completed and live <https://next-spotify-application.vercel.app>
 
 ## Project Screen Shot(s)
 
